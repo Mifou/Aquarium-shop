@@ -1,0 +1,11 @@
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link h5" [ngClass]="{active: chosenTab === 'products'}" (click)="onChoose('products')" routerLink="products">Products</a>
+  </li>
+  <li class="nav-item h5">
+    <a  [ngClass]="{active: chosenTab === 'cart'}" (click)="onChoose('cart')" class="nav-link disabled" href="#">Cart</a>
+  </li>
+  <li class="nav-item h5">
+    <a [ngClass]="{active: chosenTab === 'account'}" (click)="onChoose('account')" class="nav-link disabled" href="#">Account</a>
+  </li>
+</ul>
