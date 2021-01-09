@@ -7,28 +7,27 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class WebMockTest {
+public class ProductControllerMockTest {
+
+    @MockBean
+    private ProductService service;
 
     @Autowired
     private ProductController productController;
 
     @Autowired
     private MockMvc mvc;
-
-    @MockBean
-    private ProductService service;
 
     @Test
     public void getAllProducts() throws Exception {
@@ -41,15 +40,11 @@ public class WebMockTest {
         List<Product> products = new ArrayList<>();
         products.add(product);
 
-        when(service.findAll().get(anyInt())).thenReturn(product);
+        when(service.findAll()).thenReturn(products);
 
-
-        mvc.perform(MockMvcRequestBuilders.get("/product"))
+        mvc.perform(MockMvcRequestBuilders.get("/products"))
                 .andDo(print())
-              //  .accept(MediaType.APPLICATION_JSON)
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Gupy"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.category").value("animal"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.price").value(5d))
+                .andExpect(content().json("[{'name':'Gupy','category':'animal','price':5.0}]"))
                 .andExpect(status().isOk());
     }
 
