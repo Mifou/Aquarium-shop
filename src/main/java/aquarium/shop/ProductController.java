@@ -10,7 +10,7 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-    ProductServiceImpl productService;
+    ProductService productService;
 
 
     @GetMapping("/products")
