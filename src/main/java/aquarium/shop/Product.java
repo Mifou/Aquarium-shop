@@ -22,7 +22,7 @@ public class Product{
     @Column(nullable = false)
     private Double price;
 
-    public Product(){};
+    public Product(){}
 
     public Product(String category, String name, Double price) {
         this.name = name;
