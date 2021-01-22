@@ -1,10 +1,5 @@
 package aquarium.shop;
-import org.springframework.security.crypto.bcrypt.BCrypt;
-
-
 import javax.persistence.*;
-
-
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -19,10 +14,11 @@ public class UserDetails {
     @Column(nullable = false)
     private String name;
 
-    private String password;
+
 
     @Column(nullable = false)
-    private String hashedPassword = BCrypt.hashpw(password,BCrypt.gensalt(10));
+    private String password;
+    //private String hashedPassword = BCrypt.hashpw(password,BCrypt.gensalt(10));
 
     @Column(nullable = false)
     private String userRole;
@@ -35,13 +31,13 @@ public class UserDetails {
         this.userRole = userRole;
     }
 
-    public String getHashedPassword() {
-        return hashedPassword;
-    }
-
-    public void setHashedPassword(String hashedPassword) {
-        this.hashedPassword = hashedPassword;
-    }
+//    public String getHashedPassword() {
+//        return hashedPassword;
+//    }
+//
+//    public void setHashedPassword(String hashedPassword) {
+//        this.hashedPassword = hashedPassword;
+//    }
 
     public String getName() {
         return name;
