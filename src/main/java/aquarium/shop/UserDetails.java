@@ -1,4 +1,7 @@
 package aquarium.shop;
+
+import org.hibernate.annotations.ColumnTransformer;
+
 import javax.persistence.*;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -14,13 +17,17 @@ public class UserDetails {
     @Column(nullable = false)
     private String name;
 
+    @ColumnTransformer(
 
-
-    @Column(nullable = false)
+            write = "pgp_sym_encrypt( " +
+                    "    ?, " +
+                    "    current_setting('encrypt.key')" +
+                    ") "
+    )
+    @Column(columnDefinition = "bytea", nullable = false)
     private String password;
-    //private String hashedPassword = BCrypt.hashpw(password,BCrypt.gensalt(10));
 
-    @Column(nullable = false)
+    @Column(name = "user_role", nullable = false)
     private String userRole;
 
     public UserDetails(){}
@@ -31,13 +38,6 @@ public class UserDetails {
         this.userRole = userRole;
     }
 
-//    public String getHashedPassword() {
-//        return hashedPassword;
-//    }
-//
-//    public void setHashedPassword(String hashedPassword) {
-//        this.hashedPassword = hashedPassword;
-//    }
 
     public String getName() {
         return name;
@@ -72,4 +72,5 @@ public class UserDetails {
                 ", userRole='" + userRole + '\'' +
                 '}';
     }
+
 }
