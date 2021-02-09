@@ -12,9 +12,13 @@ class ApplicationTests {
     @Autowired
     private ProductController productController;
 
+    @Autowired
+    private UserController userController;
+
     @Test
     void contextLoads() throws Exception {
         assertThat(productController).isNotNull();
+        assertThat(userController).isNotNull();
     }
 
 }
