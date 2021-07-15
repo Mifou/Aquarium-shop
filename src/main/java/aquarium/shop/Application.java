@@ -6,13 +6,15 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.Arrays;
 
 @EnableAutoConfiguration(exclude =
 		{org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class})
 @SpringBootApplication
-public class Application {
+public class Application implements WebMvcConfigurer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -31,6 +33,11 @@ public class Application {
 			}
 
 		};
+	}
+
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/**");
 	}
 
 }

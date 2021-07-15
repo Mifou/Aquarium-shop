@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
 import { MainPageComponent } from './main-page/main-page.component'
+import { HttpClientModule } from '@angular/common/http';
 
 const routes = [
   { path: 'products', component: ProductComponent }
@@ -18,7 +19,8 @@ const routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
