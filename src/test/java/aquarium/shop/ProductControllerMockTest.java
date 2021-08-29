@@ -4,6 +4,7 @@ import aquarium.shop.product.Product;
 import aquarium.shop.product.ProductController;
 import aquarium.shop.product.ProductService;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -41,17 +42,17 @@ public class ProductControllerMockTest {
     private MockMvc mvc;
 
     private static List<Product> products = new ArrayList<>();
-
+    Product product = new Product();
     @BeforeEach
     public void seUp(){
-        Product product = new Product();
-
         product.setName("Gupy");
         product.setCategory("animal");
         product.setPrice(5d);
-
-
         products.add(product);
+    }
+    @AfterEach
+    public void tearDown(){
+        products.remove(product);
     }
 
 
