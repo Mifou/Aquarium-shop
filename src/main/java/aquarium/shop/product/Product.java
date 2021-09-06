@@ -1,4 +1,4 @@
-package aquarium.shop;
+package aquarium.shop.product;
 
 
 import javax.persistence.*;
@@ -11,7 +11,7 @@ public class Product{
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -53,6 +53,10 @@ public class Product{
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Override
