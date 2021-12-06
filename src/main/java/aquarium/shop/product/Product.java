@@ -3,6 +3,8 @@ package aquarium.shop.product;
 
 import javax.persistence.*;
 
+import java.util.Objects;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -21,6 +23,19 @@ public class Product{
 
     @Column(nullable = false)
     private Double price;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return name.equals(product.name) && category.equals(product.category) && price.equals(product.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, category, price);
+    }
 
     public Product(){}
 
