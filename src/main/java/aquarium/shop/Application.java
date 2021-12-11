@@ -1,6 +1,5 @@
 package aquarium.shop;
 
-import aquarium.shop.basket.Basket;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -21,9 +20,6 @@ public class Application implements WebMvcConfigurer {
 		SpringApplication.run(Application.class, args);
 
 	}
-
-
-
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return args -> {

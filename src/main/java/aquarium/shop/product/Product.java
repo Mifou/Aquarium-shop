@@ -1,11 +1,14 @@
 package aquarium.shop.product;
 
 
+
 import javax.persistence.*;
 
 import java.util.Objects;
 
+import static javax.persistence.GenerationType.AUTO;
 import static javax.persistence.GenerationType.IDENTITY;
+
 
 @Entity
 @Table(name = "product")
@@ -14,6 +17,7 @@ public class Product{
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
+
 
     @Column(nullable = false)
     private String name;
@@ -29,7 +33,7 @@ public class Product{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return name.equals(product.name) && category.equals(product.category) && price.equals(product.price);
+        return name.equals(product.name) && category.equals(product.category);
     }
 
     @Override
@@ -37,7 +41,9 @@ public class Product{
         return Objects.hash(name, category, price);
     }
 
-    public Product(){}
+    public Product(){
+        this.id = getId();
+    }
 
     public Product(String category, String name, Double price) {
         this.name = name;
