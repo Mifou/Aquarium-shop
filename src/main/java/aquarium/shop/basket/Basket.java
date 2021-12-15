@@ -2,6 +2,7 @@ package aquarium.shop.basket;
 
 import aquarium.shop.product.Product;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -14,7 +15,7 @@ public class Basket {
     }
 
     private HashMap<Product, Integer> content = new HashMap<>();
-    private double wholePrice;
+    private BigDecimal wholePrice;
 
     public HashMap<Product, Integer> getContent() {
         return content;
@@ -27,7 +28,7 @@ public class Basket {
         return INSTANCE;
     }
 
-    public double getWholePrice() {
+    public BigDecimal getWholePrice() {
         return wholePrice;
     }
 
@@ -37,6 +38,7 @@ public class Basket {
         } else {
             content.put(product, 1);
         }
+        wholePrice = calculateBasketPrice();
 
     }
 
@@ -46,14 +48,17 @@ public class Basket {
         } else {
             content.put(product, quantity);
         }
+        calculateBasketPrice();
     }
 
     public void removeProduct(Product product) {
         content.remove(product);
+        calculateBasketPrice();
     }
 
     public void increaseNumberOfProducts(Product product) {
         content.replace(product, content.get(product) + 1);
+        calculateBasketPrice();
     }
 
     public void decreaseNumberOfProducts(Product product) {
@@ -64,19 +69,19 @@ public class Basket {
         content.clear();
     }
 
-    public double calculateBasketPrice() {
-        wholePrice = 0;
+    public BigDecimal calculateBasketPrice() {
+
+        wholePrice = BigDecimal.valueOf(0);
         Set<Map.Entry<Product, Integer>> contentSet = content.entrySet();
         for (Map.Entry<Product, Integer> entry : contentSet) {
-            double oneEntryPrice;
-            oneEntryPrice = entry.getKey().getPrice() * entry.getValue();
-            wholePrice = wholePrice + oneEntryPrice;
+            BigDecimal oneEntryPrice;
+            oneEntryPrice = BigDecimal.valueOf(entry.getKey().getPrice() * entry.getValue()) ;
+            wholePrice = wholePrice.add(oneEntryPrice);
         }
         return wholePrice;
     }
 
     public Basket showBasket(Basket basket) {
-        basket.calculateBasketPrice();
         return basket;
     }
 

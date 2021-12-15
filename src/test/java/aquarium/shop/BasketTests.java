@@ -67,22 +67,10 @@ public class BasketTests {
     public void calculateBasketPriceTest(){
         basket.addProduct(product, 5);
         basket.addProduct(product2, 1);
-        Assertions.assertEquals(33, basket.calculateBasketPrice());
-        Assertions.assertNotEquals(32, basket.calculateBasketPrice(), 0.0);
+        Assertions.assertEquals(33, basket.calculateBasketPrice().intValue());
+        Assertions.assertNotEquals(32, basket.calculateBasketPrice().intValue(), 0.0);
         System.out.println(basket.toString());
     }
 
-    @Test
-    public void ShowBasketTest(){
-        basket.addProduct(product, 2);
-        basket.addProduct(product2, 1);
-        Assertions.assertTrue(basket.showBasket(basket).getContent().containsKey(product)
-                &&basket.showBasket(basket).getContent().containsKey(product2));
-        Assertions.assertEquals(basket.getContent().get(product),2);
-        Assertions.assertEquals(basket.getContent().get(product2),1);
-        Assertions.assertEquals(basket.calculateBasketPrice(),18);
-        Assertions.assertNotEquals(basket.calculateBasketPrice(),10);
-
-    }
 
 }
