@@ -1,18 +1,14 @@
 package aquarium.shop.product;
 
 
-
 import javax.persistence.*;
-
 import java.util.Objects;
-
-import static javax.persistence.GenerationType.AUTO;
 import static javax.persistence.GenerationType.IDENTITY;
 
 
 @Entity
 @Table(name = "product")
-public class Product{
+public class Product {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -41,7 +37,7 @@ public class Product{
         return Objects.hash(name, category, price);
     }
 
-    public Product(){
+    public Product() {
         this.id = getId();
     }
 

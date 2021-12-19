@@ -71,18 +71,6 @@ public class Basket {
         wholePrice = BigDecimal.valueOf(0);
     }
 
-    public BigDecimal calculateBasketPrice() {
-
-        wholePrice = BigDecimal.valueOf(0);
-        Set<Map.Entry<Product, Integer>> contentSet = content.entrySet();
-        for (Map.Entry<Product, Integer> entry : contentSet) {
-            BigDecimal oneEntryPrice;
-            oneEntryPrice = BigDecimal.valueOf(entry.getKey().getPrice() * entry.getValue()) ;
-            wholePrice = wholePrice.add(oneEntryPrice);
-        }
-        return wholePrice;
-    }
-
     public Basket showBasket(Basket basket) {
         return basket;
     }

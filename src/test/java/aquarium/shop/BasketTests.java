@@ -63,12 +63,4 @@ public class BasketTests {
         Assertions.assertTrue(basket.getContent().isEmpty());
     }
 
-    @Test
-    public void calculatingBasketPriceTest() {
-        basket.addProduct(product, 5);
-        basket.addProduct(product2, 1);
-        Assertions.assertEquals(33, basket.getWholePrice().doubleValue());
-        Assertions.assertNotEquals(32,basket.getWholePrice().doubleValue());
-        System.out.println(basket.toString());
-    }
 }
