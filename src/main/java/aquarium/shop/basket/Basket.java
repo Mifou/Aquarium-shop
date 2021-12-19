@@ -15,7 +15,7 @@ public class Basket {
     }
 
     private HashMap<Product, Integer> content = new HashMap<>();
-    private BigDecimal wholePrice;
+    private BigDecimal wholePrice = BigDecimal.valueOf(0);
 
     public HashMap<Product, Integer> getContent() {
         return content;
@@ -38,7 +38,7 @@ public class Basket {
         } else {
             content.put(product, 1);
         }
-        wholePrice = calculateBasketPrice();
+        wholePrice = wholePrice.add(BigDecimal.valueOf(product.getPrice()));
 
     }
 
@@ -48,25 +48,27 @@ public class Basket {
         } else {
             content.put(product, quantity);
         }
-        calculateBasketPrice();
+        wholePrice = wholePrice.add(BigDecimal.valueOf(product.getPrice()*quantity));
     }
 
     public void removeProduct(Product product) {
         content.remove(product);
-        calculateBasketPrice();
+        wholePrice = wholePrice.subtract(BigDecimal.valueOf(product.getPrice()));
     }
 
     public void increaseNumberOfProducts(Product product) {
         content.replace(product, content.get(product) + 1);
-        calculateBasketPrice();
+        wholePrice = wholePrice.add(BigDecimal.valueOf(product.getPrice()));
     }
 
     public void decreaseNumberOfProducts(Product product) {
         content.replace(product, content.get(product) - 1);
+        wholePrice = wholePrice.subtract(BigDecimal.valueOf(product.getPrice()));
     }
 
     public void clearBasket() {
         content.clear();
+        wholePrice = BigDecimal.valueOf(0);
     }
 
     public BigDecimal calculateBasketPrice() {
