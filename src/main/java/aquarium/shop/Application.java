@@ -18,8 +18,8 @@ public class Application implements WebMvcConfigurer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
-	}
 
+	}
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return args -> {
