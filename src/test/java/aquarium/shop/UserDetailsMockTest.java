@@ -18,14 +18,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @SpringBootTest
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(addFilters = false)
 public class UserDetailsMockTest {
 
     @MockBean
     private UserService service;
-
-    @Autowired
-    private UserController userController;
 
     @Autowired
     private MockMvc mvc;

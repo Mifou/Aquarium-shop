@@ -17,7 +17,7 @@ class ApplicationTests {
     private UserController userController;
 
     @Test
-    void contextLoads() throws Exception {
+    void contextLoads() {
         assertThat(productController).isNotNull();
         assertThat(userController).isNotNull();
     }

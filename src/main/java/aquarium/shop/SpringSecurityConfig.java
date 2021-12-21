@@ -6,9 +6,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-// TODO disabled Spring Security due to the issue with non working tests. Need to be fixed: https://github.com/Mifou/Aquarium-shop/issues/13
-/*@Configuration
-@EnableWebSecurity*/
+@Configuration
+@EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
