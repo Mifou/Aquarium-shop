@@ -1,13 +1,12 @@
 package aquarium.shop.basket;
 
 import aquarium.shop.product.Product;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
-
+@Component
 public class Basket {
     private static Basket INSTANCE;
 
