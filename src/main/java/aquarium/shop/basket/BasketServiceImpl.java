@@ -24,7 +24,6 @@ public class BasketServiceImpl implements BasketService {
     @Override
     public void removeProduct(Product product) {
         basket.removeProduct(product);
-
     }
 
     @Override
@@ -43,7 +42,7 @@ public class BasketServiceImpl implements BasketService {
     }
 
     @Override
-    public Basket showBasket() {
+    public String showBasket() {
         return basket.showBasket();
     }
 }

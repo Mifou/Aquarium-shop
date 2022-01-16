@@ -10,7 +10,7 @@ public interface BasketService {
     void increaseNumberOfProducts(Product product);
     void decreaseNumberOfProducts(Product product);
     void clearBasket();
-    Basket showBasket();
+    String showBasket();
 
 
 

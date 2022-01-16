@@ -36,8 +36,9 @@ public class Basket {
     }
 
     public void removeProduct(Product product) {
+        wholePrice = wholePrice.subtract(BigDecimal.valueOf(product.getPrice()*content.get(product)));
         content.remove(product);
-        wholePrice = wholePrice.subtract(BigDecimal.valueOf(product.getPrice()));
+
     }
 
     public void increaseNumberOfProducts(Product product) {
@@ -55,8 +56,8 @@ public class Basket {
         wholePrice = BigDecimal.valueOf(0);
     }
 
-    public Basket showBasket() {
-        return this;
+    public String showBasket() {
+        return this.toString();
     }
 
     @Override
