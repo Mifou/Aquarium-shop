@@ -1,35 +1,19 @@
 package aquarium.shop.basket;
 
 import aquarium.shop.product.Product;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
-
+@Component
 public class Basket {
-    private static Basket INSTANCE;
-
-    private Basket() {
-    }
 
     private HashMap<Product, Integer> content = new HashMap<>();
     private BigDecimal wholePrice = BigDecimal.valueOf(0);
 
     public HashMap<Product, Integer> getContent() {
         return content;
-    }
-
-    public static Basket getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new Basket();
-        }
-        return INSTANCE;
-    }
-
-    public BigDecimal getWholePrice() {
-        return wholePrice;
     }
 
     public void addProduct(Product product) {
@@ -71,8 +55,8 @@ public class Basket {
         wholePrice = BigDecimal.valueOf(0);
     }
 
-    public Basket showBasket(Basket basket) {
-        return basket;
+    public Basket showBasket() {
+        return this;
     }
 
     @Override

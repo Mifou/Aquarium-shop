@@ -48,7 +48,6 @@ public class ProductController {
         Product product = productService.find(id);
         productService.deleteProduct(id);
         return product;
-
     }
 
 }
