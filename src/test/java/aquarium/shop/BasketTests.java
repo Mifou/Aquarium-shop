@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 public class BasketTests {
 
     Product product = new Product();
-    Basket basket = Basket.getInstance();
+    Basket basket = new Basket();
     Product product2 = new Product();
 
     @BeforeEach

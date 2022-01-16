@@ -7,45 +7,43 @@ import org.springframework.stereotype.Service;
 @Service
 public class BasketServiceImpl implements BasketService {
 
-
-
     @Autowired
-    BasketServiceImpl basketService;
+    Basket basket;
 
 
     @Override
     public void addProduct(Product product) {
-        basketService.addProduct(product);
+        basket.addProduct(product);
     }
 
     @Override
     public void addProduct(Product product, int quantity) {
-        basketService.addProduct(product, quantity);
+        basket.addProduct(product, quantity);
     }
 
     @Override
     public void removeProduct(Product product) {
-        basketService.removeProduct(product);
+        basket.removeProduct(product);
 
     }
 
     @Override
     public void increaseNumberOfProducts(Product product) {
-        basketService.increaseNumberOfProducts(product);
+        basket.increaseNumberOfProducts(product);
     }
 
     @Override
     public void decreaseNumberOfProducts(Product product) {
-        basketService.decreaseNumberOfProducts(product);
+        basket.decreaseNumberOfProducts(product);
     }
 
     @Override
     public void clearBasket() {
-        basketService.clearBasket();
+        basket.clearBasket();
     }
 
     @Override
     public Basket showBasket() {
-        return basketService.showBasket();
+        return basket.showBasket();
     }
 }
