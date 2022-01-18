@@ -17,7 +17,7 @@ public class BasketController {
     }
 
     @GetMapping("/basket")
-    public String showBasket(){
+    public Basket showBasket(){
         return basketService.showBasket();
     }
 

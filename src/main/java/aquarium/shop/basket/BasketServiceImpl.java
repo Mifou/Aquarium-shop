@@ -42,7 +42,7 @@ public class BasketServiceImpl implements BasketService {
     }
 
     @Override
-    public String showBasket() {
-        return basket.showBasket();
+    public Basket showBasket() {
+        return basket;
     }
 }
