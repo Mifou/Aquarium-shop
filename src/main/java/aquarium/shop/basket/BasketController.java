@@ -2,10 +2,7 @@ package aquarium.shop.basket;
 
 import aquarium.shop.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class BasketController {
@@ -23,6 +20,34 @@ public class BasketController {
     public Basket showBasket(){
         return basketService.showBasket();
     }
+
+    @PostMapping({"/basket/{quantity}"})
+    public void addProduct(@PathVariable(value = "quantity") int quantity,
+                                                                     @RequestBody Product product) {
+        basketService.addProduct(product,quantity);
+    }
+    @DeleteMapping("/basket")
+    public void removeProduct(@RequestBody Product product){
+        basketService.removeProduct(product);
+    }
+
+    @PostMapping({"/basket/increase"})
+    public void increaseNumberOfProducts(@RequestBody Product product) {
+        basketService.increaseNumberOfProducts(product);
+    }
+
+    @PostMapping({"/basket/decrease"})
+    public void decreaseNumberOfProducts(@RequestBody Product product) {
+        basketService.decreaseNumberOfProducts(product);
+    }
+    @PostMapping({"/basket/clear"})
+    public void clearBasket(@RequestBody Product product) {
+        basketService.clearBasket();
+    }
+
+
+
+
 
 
 }

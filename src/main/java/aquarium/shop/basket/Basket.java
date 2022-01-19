@@ -16,6 +16,10 @@ public class Basket {
         return content;
     }
 
+    public BigDecimal getWholePrice() {
+        return wholePrice;
+    }
+
     public void addProduct(Product product) {
         if (content.containsKey(product)) {
             content.put(product, content.get(product) + 1);
@@ -35,9 +39,11 @@ public class Basket {
         wholePrice = wholePrice.add(BigDecimal.valueOf(product.getPrice()*quantity));
     }
 
+
     public void removeProduct(Product product) {
+        wholePrice = wholePrice.subtract(BigDecimal.valueOf(product.getPrice()*content.get(product)));
         content.remove(product);
-        wholePrice = wholePrice.subtract(BigDecimal.valueOf(product.getPrice()));
+
     }
 
     public void increaseNumberOfProducts(Product product) {
@@ -63,7 +69,7 @@ public class Basket {
     public String toString() {
         return "Basket{" +
                 "content=" + content +
-                ", wholePrice=" + wholePrice +
+                ", wholePrice=" + getWholePrice() +
                 '}';
     }
 }
