@@ -1,4 +1,4 @@
-package aquarium.shop;
+package aquarium.shop.order;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends CrudRepository<UserDetails, Long> {
-    List<UserDetails> findAll();
+public interface OrderRepository extends CrudRepository<OrderDetails, Long> {
+    List<OrderDetails> findAll();
 }

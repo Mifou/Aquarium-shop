@@ -1,6 +1,7 @@
 package aquarium.shop;
 
 import aquarium.shop.product.ProductController;
+import aquarium.shop.user.UserController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,7 +22,5 @@ class ApplicationTests {
         assertThat(productController).isNotNull();
         assertThat(userController).isNotNull();
     }
-
-
 
 }

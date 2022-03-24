@@ -1,4 +1,4 @@
-package aquarium.shop;
+package aquarium.shop.user;
 
 import org.hibernate.annotations.ColumnTransformer;
 
@@ -24,6 +24,7 @@ public class UserDetails {
                     "    current_setting('encrypt.key')" +
                     ") "
     )
+
     @Column(columnDefinition = "bytea", nullable = false)
     private String password;
 

@@ -1,4 +1,4 @@
-package aquarium.shop;
+package aquarium.shop.user;
 
 import java.util.List;
 
