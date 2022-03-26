@@ -7,7 +7,8 @@ import javax.persistence.*;
 public class DeliveryDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "delivery_generator")
+    @SequenceGenerator(name="delivery_generator", sequenceName = "delivery_seq", allocationSize = 50)
     @Column(name = "id")
     private long id;
 

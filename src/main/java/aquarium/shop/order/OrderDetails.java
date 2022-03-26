@@ -11,7 +11,8 @@ import java.util.HashMap;
 public class OrderDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_generator")
+    @SequenceGenerator(name = "order_generator", sequenceName = "order_seq",allocationSize = 50)
     @Column(name = "id")
     private long id;
 

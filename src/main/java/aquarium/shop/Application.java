@@ -1,8 +1,5 @@
 package aquarium.shop;
 
-import aquarium.shop.order.*;
-import aquarium.shop.product.Product;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -12,8 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.math.BigDecimal;
-import java.util.*;
+import java.util.Arrays;
 
 @EnableAutoConfiguration(exclude =
 		{org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class})
