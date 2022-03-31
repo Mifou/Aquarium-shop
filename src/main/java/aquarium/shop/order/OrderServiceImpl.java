@@ -27,4 +27,9 @@ public class OrderServiceImpl implements OrderService  {
     public void changeOrderStatus(int orderId, OrderStatus orderStatus) {
         orderRepository.findAll().get(orderId).setOrderStatus(orderStatus);
     }
+
+    @Override
+    public OrderDetails find(long id) {
+        return orderRepository.findById(id).get();
+    }
 }

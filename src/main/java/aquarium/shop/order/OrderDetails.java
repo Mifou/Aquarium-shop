@@ -26,6 +26,10 @@ public class OrderDetails {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
+    public long getId() {
+        return id;
+    }
+
     private HashMap<Product, Integer> content = new HashMap<>();
     private BigDecimal wholePrice = BigDecimal.valueOf(0);
 
