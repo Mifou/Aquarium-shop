@@ -30,18 +30,17 @@ public class OrderDetails {
         return id;
     }
 
-    private HashMap<Product, Integer> content = new HashMap<>();
-    private BigDecimal wholePrice = BigDecimal.valueOf(0);
+    //private HashMap<Product, Integer> content = new HashMap<>();
+    private BigDecimal wholePrice;
 
     public OrderDetails() {
     }
 
     public OrderDetails(DeliveryDetails deliveryDetails, PaymentStatus paymentStatus,
-                        OrderStatus orderStatus, HashMap<Product, Integer> content, BigDecimal wholePrice) {
+                        OrderStatus orderStatus, BigDecimal wholePrice) {
         this.deliveryDetails = deliveryDetails;
         this.paymentStatus = paymentStatus;
         this.orderStatus = orderStatus;
-        this.content = content;
         this.wholePrice = wholePrice;
     }
 

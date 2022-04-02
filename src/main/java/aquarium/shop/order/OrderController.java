@@ -11,16 +11,16 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping("/order")
-    public void addOrder(OrderDetails orderDetails) {
+    public void addOrder(@RequestBody OrderDetails orderDetails) {
         orderService.addOrder(orderDetails);
     }
 
-    @PatchMapping("/order/payment")
-    public void changeOrderPaymentStatus(@RequestBody OrderDetails orderDetails ) {
-        orderService.find(orderDetails.getId()).setPaymentStatus(PaymentStatus.PAID);
+    @PutMapping("/order/payment")
+    public void changeOrderPaymentStatus(@RequestBody Long id ) {
+        orderService.find(id).setPaymentStatus(PaymentStatus.PAID);
     }
 
-    @PatchMapping("/order/status")
+    @PutMapping("/order/status")
     public void changeOrderStatus(@RequestBody OrderDetails orderDetails, OrderStatus orderStatus) {
         orderService.find(orderDetails.getId()).setOrderStatus(orderStatus);
     }

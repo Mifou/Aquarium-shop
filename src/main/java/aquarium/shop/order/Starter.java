@@ -23,7 +23,7 @@ public class Starter {
                 "Poland", "Piwniczna");
         OrderUser orderUser = new OrderUser("Jan", "Zytkowicz");
         DeliveryDetails deliveryDetails = new DeliveryDetails(address, orderUser, Shipment.DELIVERY);
-        OrderDetails order = new OrderDetails(deliveryDetails, PaymentStatus.NOT_PAID, OrderStatus.APPROVED, content, wholePrice);
+        OrderDetails order = new OrderDetails(deliveryDetails, PaymentStatus.NOT_PAID, OrderStatus.APPROVED, wholePrice);
 
         orderRepository.save(order);
 
