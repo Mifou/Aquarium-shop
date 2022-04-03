@@ -32,4 +32,28 @@ public class DeliveryDetails {
         this.orderUser = orderUser;
         this.shipment = shipment;
     }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public OrderUser getOrderUser() {
+        return orderUser;
+    }
+
+    public void setOrderUser(OrderUser orderUser) {
+        this.orderUser = orderUser;
+    }
+
+    public Shipment getShipment() {
+        return shipment;
+    }
+
+    public void setShipment(Shipment shipment) {
+        this.shipment = shipment;
+    }
 }

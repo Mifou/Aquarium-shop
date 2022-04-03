@@ -31,7 +31,7 @@ public class OrderDetails {
     }
 
     //private HashMap<Product, Integer> content = new HashMap<>();
-    private BigDecimal wholePrice;
+    //private BigDecimal wholePrice;
 
     public OrderDetails() {
     }
@@ -41,13 +41,15 @@ public class OrderDetails {
         this.deliveryDetails = deliveryDetails;
         this.paymentStatus = paymentStatus;
         this.orderStatus = orderStatus;
-        this.wholePrice = wholePrice;
     }
 
     public PaymentStatus getPaymentStatus() {
         return paymentStatus;
     }
 
+    public void setPaymentStatus(PaymentStatus paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
 
     public OrderStatus getOrderStatus() {
         return orderStatus;
@@ -57,7 +59,12 @@ public class OrderDetails {
         this.orderStatus = orderStatus;
     }
 
-    public void setPaymentStatus(PaymentStatus i) {
-        this.paymentStatus = paymentStatus;
+    public void setDeliveryDetails(DeliveryDetails deliveryDetails) {
+        this.deliveryDetails = deliveryDetails;
     }
+
+    public DeliveryDetails getDeliveryDetails() {
+        return deliveryDetails;
+    }
+
 }
