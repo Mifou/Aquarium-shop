@@ -1,10 +1,8 @@
 package aquarium.shop.order;
 
-import aquarium.shop.product.Product;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.HashMap;
+import java.util.List;
 
 @Entity
 @Table(name = "order_details")
@@ -12,7 +10,7 @@ public class OrderDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_generator")
-    @SequenceGenerator(name = "order_generator", sequenceName = "order_seq",allocationSize = 50)
+    @SequenceGenerator(name = "order_generator", sequenceName = "order_seq", allocationSize = 50)
     @Column(name = "id")
     private long id;
 
@@ -30,14 +28,18 @@ public class OrderDetails {
         return id;
     }
 
-    //private HashMap<Product, Integer> content = new HashMap<>();
-    //private BigDecimal wholePrice;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
+    private List<PurchasedProduct> purchasedProducts;
+
+
+    private BigDecimal wholePrice;
 
     public OrderDetails() {
     }
 
     public OrderDetails(DeliveryDetails deliveryDetails, PaymentStatus paymentStatus,
-                        OrderStatus orderStatus, BigDecimal wholePrice) {
+                        OrderStatus orderStatus) {
         this.deliveryDetails = deliveryDetails;
         this.paymentStatus = paymentStatus;
         this.orderStatus = orderStatus;
@@ -67,4 +69,19 @@ public class OrderDetails {
         return deliveryDetails;
     }
 
+    public List<PurchasedProduct> getPurchasedProducts() {
+        return purchasedProducts;
+    }
+
+    public void setPurchasedProducts(List<PurchasedProduct> purchasedProducts) {
+        this.purchasedProducts = purchasedProducts;
+    }
+
+    public BigDecimal getWholePrice() {
+        return wholePrice;
+    }
+
+    public void setWholePrice(BigDecimal wholePrice) {
+        this.wholePrice = wholePrice;
+    }
 }

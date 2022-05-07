@@ -8,7 +8,7 @@ public class DeliveryDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "delivery_generator")
-    @SequenceGenerator(name="delivery_generator", sequenceName = "delivery_seq", allocationSize = 50)
+    @SequenceGenerator(name = "delivery_generator", sequenceName = "delivery_seq", allocationSize = 50)
     @Column(name = "id")
     private long id;
 
