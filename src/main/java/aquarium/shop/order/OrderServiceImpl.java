@@ -4,11 +4,9 @@ import aquarium.shop.basket.Basket;
 import aquarium.shop.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -22,16 +20,14 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void addOrder(OrderDetails orderDetails) {
         List<PurchasedProduct> purchasedProductList = new ArrayList<>();
-        int wholePrice = 0;
-        for (HashMap.Entry<Product, Integer> entry : basket.showBasket().getContent().entrySet()) {
+        for (Map.Entry<Product, Integer> entry : basket.showBasket().getContent().entrySet()) {
             Product product = entry.getKey();
             int quantity = entry.getValue();
             PurchasedProduct purchasedProduct = new PurchasedProduct(product, quantity);
             purchasedProductList.add(purchasedProduct);
-            wholePrice += (product.getPrice() * quantity);
         }
 
-        orderDetails.setWholePrice(BigDecimal.valueOf(wholePrice));
+        orderDetails.setWholePrice(basket.getWholePrice());
         orderDetails.setPurchasedProducts(purchasedProductList);
         orderRepository.save(orderDetails);
 

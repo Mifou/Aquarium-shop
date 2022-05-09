@@ -1,9 +1,6 @@
 package aquarium.shop.basket;
 
-import aquarium.shop.order.OrderDetails;
-import aquarium.shop.order.OrderRepository;
 import aquarium.shop.product.Product;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -12,8 +9,6 @@ import java.util.HashMap;
 @Component
 public class Basket {
 
-    @Autowired
-    Basket basket;
 
     private HashMap<Product, Integer> content = new HashMap<>();
     private BigDecimal wholePrice = BigDecimal.valueOf(0);

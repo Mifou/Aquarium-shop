@@ -5,7 +5,7 @@ import aquarium.shop.product.Product;
 import javax.persistence.*;
 
 
-import static javax.persistence.GenerationType.IDENTITY;
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name = "purchased_product")
@@ -13,7 +13,7 @@ public class PurchasedProduct {
 
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = SEQUENCE)
     private Integer id;
 
 
