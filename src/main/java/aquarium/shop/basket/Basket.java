@@ -9,6 +9,7 @@ import java.util.HashMap;
 @Component
 public class Basket {
 
+
     private HashMap<Product, Integer> content = new HashMap<>();
     private BigDecimal wholePrice = BigDecimal.valueOf(0);
 
@@ -27,7 +28,6 @@ public class Basket {
             content.put(product, 1);
         }
         wholePrice = wholePrice.add(BigDecimal.valueOf(product.getPrice()));
-
     }
 
     public void addProduct(Product product, int quantity) {
@@ -36,12 +36,12 @@ public class Basket {
         } else {
             content.put(product, quantity);
         }
-        wholePrice = wholePrice.add(BigDecimal.valueOf(product.getPrice()*quantity));
+        wholePrice = wholePrice.add(BigDecimal.valueOf(product.getPrice() * quantity));
     }
 
 
     public void removeProduct(Product product) {
-        wholePrice = wholePrice.subtract(BigDecimal.valueOf(product.getPrice()*content.get(product)));
+        wholePrice = wholePrice.subtract(BigDecimal.valueOf(product.getPrice() * content.get(product)));
         content.remove(product);
 
     }
